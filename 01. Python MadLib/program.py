@@ -5,15 +5,15 @@ config={
 
 spanish_texts={
   "intro_text": """Bienvenido a Python Madlibs, el juego es muy simple, voy a pedirte unas palabras y...
-Generare una frase con las mismas, entretenido no? que cosas ratar y aleatorias saldran? eso esta por verse...""",
+Generare una frase con las mismas, entretenido no? que cosas raras y aleatorias saldran? eso esta por verse...""",
   "sustantive_question":6,
   "adjetive_question":6,
   "verb_question":6,
   "random_word_question":6,
 }
 english_texts={
-  "intro_text": """Bienvenido a Python Madlibs, el juego es muy simple, voy a pedirte unas palabras y...
-Generare una frase con las mismas, entretenido no? que cosas ratar y aleatorias saldran? eso esta por verse...""",
+  "intro_text": """Welcome to Python Madlibs, this game is simple, i'm going to ask you some for some words and...
+i 'll make a phrase with it!, funny isn't it? what a random and strange things are going to be? let's see...""",
   "sustantive_question":6,
   "adjetive_question":6,
   "verb_question":6,
