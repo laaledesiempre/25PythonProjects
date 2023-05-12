@@ -22,7 +22,7 @@ while configuration.game_mode_selected==False:
         configuration.game_mode= PLAYER_GAMEMODE
     elif game_mode == "b":
         configuration.game_mode_selected=True
-        configuration.game_mode= PLAYER_GAMEMODE
+        configuration.game_mode= COMPUTER_GAMEMODE
     else:
         print("?")
 if configuration.game_mode==PLAYER_GAMEMODE:
@@ -45,6 +45,22 @@ if configuration.game_mode==PLAYER_GAMEMODE:
         print("Press Enter to play again!")
         input()
 elif configuration.game_mode==COMPUTER_GAMEMODE:
-    "asd"
+    while configuration.game_loop==True:
+        configuration.game_number_selected=False
+        print("Someone told me that you are a genius, i'm a computer, if you are a genius... can you guess my number? Im thinking one... can you guess it? is between 1 and 5")
+        random_number= random.randrange(1,6)
+        while configuration.game_number_selected==False:
+            number_selected= input()
+            if number_selected!="" and int(number_selected)<6 and int(number_selected)>0:
+                configuration.game_number_selected=True
+            else:
+                print("That is not a valid Number")
+        if str(random_number)==number_selected:
+            print("You guessed, You are a real genius!")
+        else:
+            print(f"oh, well, i'm disapointed, nice try!, my number was {random_number}")
+        print("Press Enter to play again!")
+        input()
+        
 else:
     print("How did you get here? o.O")
