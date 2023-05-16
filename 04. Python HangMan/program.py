@@ -1,7 +1,24 @@
-words={
-    "caballo":""
-}
 
+import random
+
+words=["caballo"]
+letter_selected=False
+global letters_on_load
+letters_on_load=""
+game_ended=False
+game_loop=True
+
+#Win checker
+def winChecker(string1,string2):
+    if string1==string2:
+        print("you win")
+        game_ended=True
+    elif stickman.failures>=6:
+        print("you lose")
+        game_ended=True
+
+
+#display
 """
    0
   /|\\
@@ -42,3 +59,42 @@ display=f"""
 
  
 """
+#end of display
+#text function
+def showText(word):
+    final_string=""
+    for letterin in word:
+        if letterin in letters_on_load:
+            final_string+=letterin.upper()
+        else:
+            final_string+=" _ "
+    winChecker(word,final_string)
+    return final_string
+#end of text, function
+def checker(letter,word,lol):
+    if len(letter)>1 and len(letter)<1:
+        print("No valid, just one letter")
+    elif letter in word:
+        lol=lol+letter
+        letter_selected=True
+    else:
+        stickman.failure()
+        letter_selected=True
+
+
+
+#game
+
+while game_loop:
+    print("Welcome to our game, press ENTER to start")
+    input()
+    word=random.choice(words)
+    game_ended=False
+    while not game_ended:
+        print(display)
+        print(showText(word))
+        letter_selected=False
+        while not letter_selected:
+            letter=input()
+            checker(letter,word,letters_on_load)
+            print(letter_selected)
