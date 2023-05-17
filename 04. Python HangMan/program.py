@@ -34,9 +34,10 @@ class man_stages:
         elif self.failures==6:
             self.current_legs="""/ \\"""
     def reset(self):
-        current_head=""" """
-        current_body="""   """
-        current_legs="""   """
+        self.current_head=""" """
+        self.current_body="""   """
+        self.current_legs="""   """
+        self.failures=0
     def display(self):
         return f"""
    |
