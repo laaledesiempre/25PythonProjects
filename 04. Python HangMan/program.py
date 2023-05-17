@@ -57,10 +57,12 @@ def winChecker(string1,string2):
     if string1==string2:
         print("you win")
         config.letters_on_load=""
+        stickman.reset()
         config.game_ended=True
     elif stickman.failures>=6:
         print("you lose, press enter to play again")
         config.letters_on_load=""
+        stickman.reset()
         config.game_ended=True
 
 #text trasnformation function
