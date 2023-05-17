@@ -5,7 +5,7 @@ import random
 #states
 
 class configuration_data:
-    words=["horse","tatami","amigo","sunscreen","pizza","chocolate","python","dog","chile","eggplant"]
+    words=["horse","tatami","amigo","sunscreen","pizza","chocolate","python","dog","chile","eggplant","sunset","parasite","castle","summer","winter","palace","quinoa","camera"]
     letter_selected=False
     letters_on_load=""
     game_ended=False
@@ -55,7 +55,7 @@ stickman= man_stages()
 
 def winChecker(string1,string2):
     if string1==string2:
-        print("you win")
+        print("you win, press enter to play again")
         config.letters_on_load=""
         stickman.reset()
         config.game_ended=True
