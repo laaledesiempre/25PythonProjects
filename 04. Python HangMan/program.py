@@ -1,31 +1,19 @@
-
 import random
+#---------------------------------------------
+#classes and objects
 
-words=["caballo"]
-letter_selected=False
-global letters_on_load
-letters_on_load=""
-game_ended=False
-game_loop=True
+#states
 
-#Win checker
-def winChecker(string1,string2):
-    if string1==string2:
-        print("you win")
-        game_ended=True
-    elif stickman.failures>=6:
-        print("you lose")
-        game_ended=True
-
+class configuration_data:
+    words=["horse","tatami","amigo","sunscreen","pizza","chocolate","python","dog","chile","eggplant"]
+    letter_selected=False
+    letters_on_load=""
+    game_ended=False
+    game_loop=True
+config= configuration_data()
 
 #display
-"""
-   0
-  /|\\
-  / \\
 
-"""
-current_word=""
 class man_stages:
     failures=0
     current_head=""" """
@@ -49,52 +37,66 @@ class man_stages:
         current_head=""" """
         current_body="""   """
         current_legs="""   """
-stickman= man_stages()
-display=f"""
+    def display(self):
+        return f"""
    |
    |
-  {stickman.current_head}
- {stickman.current_body}
- {stickman.current_legs}
+  {self.current_head}
+ {self.current_body}
+ {self.current_legs}
 
  
 """
-#end of display
-#text function
+stickman= man_stages()
+#---------------------------------------------
+#methods
+
+#Win checker
+
+def winChecker(string1,string2):
+    if string1==string2:
+        print("you win")
+        config.letters_on_load=""
+        config.game_ended=True
+    elif stickman.failures>=6:
+        print("you lose, press enter to play again")
+        config.letters_on_load=""
+        config.game_ended=True
+
+#text trasnformation function
 def showText(word):
     final_string=""
     for letterin in word:
-        if letterin in letters_on_load:
+        if letterin in config.letters_on_load:
             final_string+=letterin.upper()
         else:
             final_string+=" _ "
-    winChecker(word,final_string)
+    winChecker(word,final_string.lower())#revisar
     return final_string
 #end of text, function
-def checker(letter,word,lol):
+
+def checker(letter,word):
     if len(letter)>1 and len(letter)<1:
         print("No valid, just one letter")
     elif letter in word:
-        lol=lol+letter
-        letter_selected=True
+        config.letters_on_load+=letter
+        config.letter_selected=True
     else:
         stickman.failure()
-        letter_selected=True
+        config.letter_selected=True
 
-
-
+#---------------------------------------------
 #game
 
-while game_loop:
+while config.game_loop:
     print("Welcome to our game, press ENTER to start")
     input()
-    word=random.choice(words)
-    game_ended=False
-    while not game_ended:
-        print(display)
+    word=random.choice(config.words)
+    config.game_ended=False
+    while not config.game_ended:
+        print(stickman.display())
         print(showText(word))
-        letter_selected=False
-        while not letter_selected:
+        config.letter_selected=False
+        while not config.letter_selected:
             letter=input()
-            checker(letter,word,letters_on_load)
-            print(letter_selected)
+            checker(letter,word)
