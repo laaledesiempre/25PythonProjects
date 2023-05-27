@@ -1,2 +1,2 @@
 import random
-print(sum([p[0] for p in [[20 if j ==[5] else 12 if j ==[4] else 9 if j ==[2,3] or j==[3,2] else 6 if j==[3] else 5 if j==[2,2] else 2 if j==[2] else 0] for j in [[h.count(i) for i in range(1,7) if h.count(i) > 1] for h in [[random.choice(range(1,7)) for _ in range(5)] for _ in range(5)]]]]))
+print(sum([20 if j ==[5] else 12 if j ==[4] else 9 if j ==[2,3] or j==[3,2] else 6 if j==[3] else 5 if j==[2,2] else 2 if j==[2] else 0][0] for j in [[h.count(i) for i in range(1,7) if h.count(i) > 1] for h in [[random.choice(range(1,7)) for _ in range(5)] for _ in range(5)]]))
