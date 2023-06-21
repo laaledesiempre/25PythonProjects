@@ -77,7 +77,7 @@ print("valores")
 for x in dicc.values():
     print(x)
 '''
-
+'''
 notas={
     }
 z=int(input("cantidad de elementos: "))
@@ -95,3 +95,106 @@ print(id(notas))
 print("valores")
 for x in notS2.items():
     print(x)
+'''
+'''
+notas= {
+    'Pepito':(9,6,4),
+    'Tamal':(9,10,11),
+    'Josefa':(2,6,9)
+    }
+for x in notas.items():
+    for y in x[1]:
+        if y not in range(1,11):
+            print(f"Error, nota erronea en {x}. nota fuera de rango")
+
+for x in notas.items():
+    print(f"{x[0]}: {max(x[1])}")
+
+for x in notas.items():
+    print(f"{x[0]}: {sum(x[1])/len(x[1])}")
+'''
+'''
+lista1= input("Ingrese numeros, separados por coma: ").split(",")
+lista2= input("Ingrese mas numeros, separados por coma: ").split(",")
+object={
+        'UNO':[],
+        'DOS':[]
+        }
+for x in lista1:
+    try:
+        object['UNO'].append(int(x))
+    except:
+        print(f"Valor {x} invalido como numero entero, se ignorara")
+for x in lista2:
+    try:
+        object['DOS'].append(int(x))
+    except:
+        print(f"Valor {x} invalido como numero entero, se ignorara")
+for x in object.items():
+    print(f"{x[0]}: {x[1]}")
+'''
+data={
+        
+    }
+print("Bienvenido a la base de datos de los alumnos")
+if len(data)==0:
+    print("La base de datos se encuentra vacia.")
+ 
+while True:
+    print('''
+          Elija una de las siguientes opciones escribiendo el simbolo indicado a la izquierda del parentesis:
+
+          1) Cargar alumno y notas.
+          2) Mostrar nombres y promedio.
+          S) Salir
+          ''')
+    opcion= input('Seleccione una opcion: ')
+    print()
+    if opcion=="1":
+        print("Ingrese el nombre del alumno")
+        while True:
+            added=False
+            alumn=input("Nombre del alumno: ")
+            if alumn in data.keys():
+                print("Nombre presente en nuestra base de datos, porfavor utilice otro")
+                continue
+            else:
+                print("Ingrese las notas del alumno separadas por coma (del 1 al 10)")
+                while True:
+                    notas=input("Notas del alumno: ").split(",")
+                    notas_convertidas=[]
+                    for x in notas:
+                        try:
+                            if 0 <= int(x) <10:
+                                notas_convertidas.append(int(x))
+                            else:
+                                print("notas invalidas, porfavor reintentar")
+                                notas_convertidas.clear()
+                                break
+                        except:
+                            print("notas invalidas, porfavor reintentar")
+                            notas_convertidas.clear()
+                            break
+                    if len(notas_convertidas)>0:
+                        data[alumn]=notas_convertidas
+                        added=True
+                        break
+            if added:
+                break
+            else:
+                continue
+
+                    
+    elif opcion=="2":
+        if len(data)==0:
+            print("Base de datos vacia, no es posible ver la lista de promedios")
+        else:
+            print("Lista de promedios:")
+            for x in data.items():
+                print(f"{x[0]}: {sum(x[1])/len(x[1])}")
+    elif opcion.upper()=="S":
+            break
+    else:
+        print("Opcion invalida:")
+        continue
+
